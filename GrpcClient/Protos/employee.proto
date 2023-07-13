@@ -1,0 +1,29 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "EmployeeGrpcService";
+
+package employeegrpc;
+
+service EmployeeService
+{
+	rpc GetEmployees (GetEmployeesRequest) returns (GetEmployeesResponse);
+}
+
+message GetEmployeesRequest
+{
+	string Id = 1; 
+}
+
+message GetEmployeesResponse
+{
+	string Id = 1;
+	string FirstName = 2;
+	string LastName = 3;
+	Address Address = 4;
+}
+
+message Address
+{
+	string StreetName1 = 1;
+	string StreetName2 = 2;
+}
