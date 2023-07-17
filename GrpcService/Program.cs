@@ -1,4 +1,5 @@
 using AutoFixture;
+using EmployeeGrpcService;
 using GrpcService.Models;
 using GrpcService.Services;
 
@@ -17,7 +18,7 @@ app.MapGrpcService<GreeterService>();
 app.MapGrpcService<EmployeeServiceImplementation>();
 
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
-app.MapGet("/GetEmployeesRest", async () => { await Task.Delay(500); var employee = new Fixture().Create<Employee>(); return Results.Ok(employee); });
+app.MapGet("/GetEmployeesRest", async () => { await Task.Delay(500); var employee = new Fixture().Create<GetEmployeesResponse>(); return Results.Ok(employee); });
 
 app.Logger.LogInformation("GRPC app is starting...");
 app.Run();

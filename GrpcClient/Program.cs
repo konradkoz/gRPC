@@ -4,10 +4,11 @@ using GrpcService;
 
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
-using var channel = GrpcChannel.ForAddress("http://localhost:5007", new GrpcChannelOptions() {  });
+using var channel = GrpcChannel.ForAddress("https://localhost:5007", new GrpcChannelOptions() {  });
 
 var client = new Greeter.GreeterClient(channel); 
 var employeeClient = new EmployeeService.EmployeeServiceClient(channel);
+Console.WriteLine("Client initialized, press any key to send and revive messages...");
 
 while (Console.ReadKey().KeyChar != 'S')
 {
